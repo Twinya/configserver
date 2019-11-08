@@ -1,0 +1,26 @@
+server:
+  port: 8800
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    serviceUrl:
+      #注册中心的地址
+      defaultZone: http://jianling:jianlingkeji.123@localhost:8777/eureka/
+#          defaultZone: http://jianling:jianlingkeji.123@172.16.178.15:8777/eureka/
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://git.dev.tencent.com/fy_/qianmi_springcloudconfig.git
+          #                    uri: https://github.com/Twinya/configserver.git
+          username: twinya
+          password: 123456
+          searchPaths: /
+          default-label: master
+      username:
+  application:
+    #当前应用名称
+    name: configserver
